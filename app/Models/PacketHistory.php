@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Packet extends Model
+class PacketHistory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['packetHistory'];
+    protected $fillable = ['packetType', 'createdAt', 'hexData', 'isNew', 'packetData'];
     public $timestamps = false;
 
-    protected $casts =['packetHistory' => 'array'];
+    protected $casts =['packetData' => 'array'];
+
 }

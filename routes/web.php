@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PacketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PacketController::class, 'index']);
+Route::post('/',[PacketController::class, 'upload']);
+
+Route::get('/download', [PacketController::class, 'export'])->name('download');
+

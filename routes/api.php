@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('upload', JsonController::class);
+Route::get('', [JsonController::class, 'index']);
+Route::post('upload', [JsonController::class, 'store']);

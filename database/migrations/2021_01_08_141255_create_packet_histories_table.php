@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePacketsTable extends Migration
+class CreatePacketHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreatePacketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('packets', function (Blueprint $table) {
+        Schema::create('packet_histories', function (Blueprint $table) {
             $table->id();
-            $table->json('packetHistory');
+            $table->integer('packetType');
+            $table->integer('createdAt');
+            $table->text('hexData');
+            $table->boolean('isNew')->default(0);
+            $table->json('packetData');
         });
     }
 
@@ -26,6 +30,6 @@ class CreatePacketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packets');
+        Schema::dropIfExists('packet_histories');
     }
 }
